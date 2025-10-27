@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Home - CropCare{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<div class="row align-items-center gy-4 mt-3">
+  <!-- Text Section -->
+  <div class="col-md-6">
+    <h1 class="display-4 fw-bold text-success">CropCare: Smarter Farming with AI</h1>
+    <p class="lead mb-4 text-muted">
+      Harness the power of artificial intelligence to protect your crops.  
+      Upload a simple photo of your plant leaves, and our system instantly detects potential diseases.  
+      Stay ahead with real-time alerts and data-driven insights.
+    </p>
+    <div class="d-flex flex-wrap gap-3">
+      <a href="{{ url_for('register') }}" class="btn btn-success btn-lg px-4">🌱 Get Started</a>
+      <a href="{{ url_for('crops') }}" class="btn btn-outline-dark btn-lg px-4">🌿 Learn About Crops</a>
+    </div>
+  </div>
+
+  <!-- Image Section -->
+  <div class="col-md-6 text-center">
+    <img 
+      src="https://images.pexels.com/photos/1131458/pexels-photo-1131458.jpeg" 
+      alt="Healthy Crops" 
+      class="img-fluid rounded-3 shadow-lg"
+      style="max-height: 450px; object-fit: cover;"
+    >
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="container mt-5 pt-2">
+  <h2 class="text-center fw-bold mb-4 text-dark mt-3">Why Choose CropCare?</h2>
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <div class="p-4 border rounded-3 shadow-sm h-100 bg-light">
+        <h5 class="fw-bold text-success">🌐 AI-Powered Detection</h5>
+        <p class="text-muted">Our deep learning model identifies plant diseases in seconds with high accuracy, saving time and effort for farmers.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="p-4 border rounded-3 shadow-sm h-100 bg-light">
+        <h5 class="fw-bold text-success">📩 Real-Time Alerts</h5>
+        <p class="text-muted">Get instant SMS & Email notifications about detected issues, so you can take action before it spreads.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="p-4 border rounded-3 shadow-sm h-100 bg-light">
+        <h5 class="fw-bold text-success">☁️ Cloud Storage</h5>
+        <p class="text-muted">Access all your past reports and crop data anytime, securely stored on the cloud with easy history tracking.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About Section -->
+<div class="container mt-5 py-5 border-top">
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <img 
+        src="https://images.pexels.com/photos/1300972/pexels-photo-1300972.jpeg" 
+        alt="Farmers working in field" 
+        class="img-fluid rounded-3 shadow-lg"
+      >
+    </div>
+    <div class="col-md-6 ps-md-5 mt-4 mt-md-0">
+      <h3 class="fw-bold text-dark">Empowering Farmers with Technology</h3>
+      <p class="text-muted">
+        Agriculture faces major challenges from pests, diseases, and changing climates.  
+        CropCare bridges the gap by combining **AI, real-time alerts, and cloud storage**, 
+        ensuring farmers can protect their harvests efficiently.  
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Call to Action -->
+<div class="container text-center my-5 py-5 bg-light rounded-3 shadow-sm">
+  <h2 class="fw-bold text-success">Ready to Protect Your Crops?</h2>
+  <p class="lead text-muted">Join thousands of farmers using CropCare to prevent crop loss and increase yield.</p>
+  <a href="{{ url_for('register') }}" class="btn btn-lg btn-success px-3 py-2">🚀 Start Now</a>
+</div>
+
+{% endblock %}

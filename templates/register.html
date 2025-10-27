@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center align-items-center" style="min-height: 75vh;">
+  <!-- Form Column -->
+  <div class="col-md-6 col-lg-5">
+    <div class="card border-0 shadow-lg rounded-4">
+      <div class="card-body p-4">
+        <h2 class="card-title text-center mb-4 fw-bold">Create Your Account</h2>
+        <p class="text-center text-muted mb-4">Sign up to access CropCare and manage your crops efficiently.</p>
+        <form method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input id="name" class="form-control form-control-lg" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" class="form-control form-control-lg" name="email" type="email" placeholder="example@mail.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone (for SMS)</label>
+            <input id="phone" class="form-control form-control-lg" name="phone" placeholder="+91xxxxxxxxxx" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" class="form-control form-control-lg" name="password" type="password" placeholder="Enter password" required>
+          </div>
+          <button class="btn btn-success w-100 btn-lg fw-semibold">Register</button>
+        </form>
+        <div class="text-center mt-3">
+          <p class="small mb-0">Already have an account? <a href="{{ url_for('login') }}" class="text-success fw-semibold">Login</a></p>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</div>
+
+{% endblock %}

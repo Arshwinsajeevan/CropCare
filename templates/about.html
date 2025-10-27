@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+
+<h2 class="mb-4">About CropCare</h2>
+<p>CropCare is an <strong>Automated Crop Disease Detection System</strong> designed to help farmers monitor and maintain healthy crops using AI-powered image recognition. It detects plant diseases in real-time and provides actionable alerts via email and SMS.</p>
+
+<div class="accordion" id="aboutAccordion">
+
+  <!-- How It Works -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+        How It Works
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#aboutAccordion">
+      <div class="accordion-body">
+        <ol>
+          <li>Upload an image of your plant or crop through the dashboard.</li>
+          <li>The AI model analyzes the image and identifies potential diseases.</li>
+          <li>A detailed report is generated with disease name, severity, and recommended actions.</li>
+          <li>Real-time notifications are sent via email or SMS for diseased crops.</li>
+          <li>All predictions are stored securely in the cloud for monitoring crop health over time.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Features -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+        Key Features
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>AI-based image recognition for fast and accurate disease detection.</li>
+          <li>Real-time alerts through email and SMS.</li>
+          <li>Secure cloud storage for user predictions and history.</li>
+          <li>Comprehensive dashboard to view past predictions and statistics.</li>
+          <li>Supports multiple crops and vegetables with disease recommendations.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Benefits -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+        Benefits to Farmers
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Early detection of crop diseases to prevent yield loss.</li>
+          <li>Actionable guidance on disease management.</li>
+          <li>Track crop health over time and make informed decisions.</li>
+          <li>Reduces dependency on in-person agronomists.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Technology Stack -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+        Technology Stack
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+      <div class="accordion-body">
+        <ul>
+          <li>Frontend: HTML, Bootstrap 5</li>
+          <li>Backend: Flask (Python)</li>
+          <li>AI/ML: TensorFlow/Keras for image recognition</li>
+          <li>Database & Cloud: Supabase for secure data storage</li>
+          <li>Notifications: Email (SMTP) and SMS (Twilio)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="mt-4">CropCare is designed to be lightweight, scalable, and user-friendly, making advanced agricultural technology accessible to farmers everywhere.</p>
+
+{% endblock %}

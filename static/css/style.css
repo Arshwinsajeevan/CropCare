@@ -1,0 +1,109 @@
+/* body { background: linear-gradient(135deg,#e9f7ef,#eef7ff); font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+.navbar-brand { font-weight: 700; }
+.card { border-radius: 12px; }
+.btn-primary { background: #2c7a4b; border: none; }
+.btn-primary:hover { background: #225f3a; }
+footer { font-size: .9rem; } */
+
+/* ====== Global Theme (Old-Money Minimal Style) ====== */
+body {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #f8f6f2; /* warm beige */
+  color: #2f3e2f; /* muted dark green-brown */
+  line-height: 1.7;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #4b684b !important; /* deep muted green */
+  font-family: "Josefin Sans", sans-serif;
+
+}
+.navbar .nav-link,
+.navbar-brand {
+  color: #ffffff !important;
+}
+.navbar .nav-link:hover {
+  color: #c5d6c2 !important; /* soft green hover */
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Josefin Sans", sans-serif;
+  color: #2f3e2f;
+  font-weight: 700;
+}
+
+p {
+  color: rgb(0, 0, 0);
+}
+
+/* Buttons */
+.btn-success {
+  background-color: #3a5a40;
+  border: none;
+}
+.btn-success:hover {
+  background-color: #2d4a33;
+}
+
+.btn-outline-primary {
+  border-color: #3a5a40;
+  color: #3a5a40;
+}
+.btn-outline-primary:hover {
+  background-color: #3a5a40;
+  color: #fff;
+}
+
+/* Cards */
+.card {
+  border-radius: 12px;
+  border: none;
+  background-color: #ffffff;
+}
+.card-body {
+  padding: 1.5rem;
+}
+.card-title {
+  color: #3a5a40;
+}
+
+/* Links */
+a {
+  color: #2b3e2f;
+  text-decoration: none;
+}
+a:hover {
+  color: #4d7154;
+}
+
+/* Footer */
+footer {
+  background-color:  #4b684b;
+  color: #fbfbfb;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+/* Smooth fade-in for accordion content */
+.accordion-body {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.accordion-collapse.show .accordion-body {
+  opacity: 1;
+  transform: translateY(0);
+}
+.accordion-button {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.accordion-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center align-items-center" style="min-height: 75vh;">
+  <!-- Form Column -->
+  <div class="col-md-6 col-lg-5">
+    <div class="card border-0 shadow-lg rounded-4">
+      <div class="card-body p-4">
+        <h2 class="card-title text-center mb-4 fw-bold">Login to CropCare</h2>
+        <p class="text-center text-muted mb-4">Access your account to manage crops and get disease alerts.</p>
+        <form method="POST">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" class="form-control form-control-lg" name="email" type="email" placeholder="example@mail.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" class="form-control form-control-lg" name="password" type="password" placeholder="Enter password" required>
+          </div>
+          <button class="btn btn-success w-100 btn-lg fw-semibold">Login</button>
+        </form>
+        <div class="text-center mt-3">
+          <p class="small mb-0">New user? <a href="{{ url_for('register') }}" class="text-success fw-semibold">Create account</a></p>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+{% endblock %}

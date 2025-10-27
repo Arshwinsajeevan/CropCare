@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block title %}Result{% endblock %}
+{% block content %}
+
+<style>
+  /* Fade-in animation */
+  .fade-in {
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Gradient card */
+  .gradient-card {
+    background: linear-gradient(135deg, #f0f9ff, #ffffff);
+  }
+
+  /* Alert styling */
+  .alert-custom {
+    border-radius: 12px;
+    font-size: 1rem;
+    padding: 1rem 1.2rem;
+  }
+
+  /* Button hover effect */
+  .btn-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+
+  /* Healthy icon bounce */
+  .icon-healthy {
+    display: inline-block;
+    animation: bounce 1s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+    60% { transform: translateY(-3px); }
+  }
+
+  /* Warning icon pulse */
+  .icon-warning {
+    display: inline-block;
+    animation: pulse 1.2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); color: #ffc107; }
+    50% { transform: scale(1.2); color: #ff9800; }
+    100% { transform: scale(1); color: #ffc107; }
+  }
+
+  /* Image hover zoom */
+  .img-zoom:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+  }
+
+  /* List items animation */
+  .list-group-item {
+    transition: background 0.3s ease;
+  }
+  .list-group-item:hover {
+    background: #f1faff;
+  }
+</style>
+
+<div class="container py-5">
+  <div class="row justify-content-center g-5">
+
+    <!-- Plant Result Card -->
+    <div class="col-lg-5 fade-in">
+      <div class="card gradient-card border-0 shadow-lg rounded-4 overflow-hidden">
+
+        {# Image URL handling #}
+        {% if img_path.startswith('http') %}
+        {% set display_url = img_path %}
+      {% else %}
+        {% set display_url = url_for('static', filename=img_path.split('static/')[-1]) %}
+      {% endif %}
+      <img src="{{ display_url }}" class="card-img-top img-zoom" style="height:360px; object-fit:fill;">
+      
+        <div class="card-body">
+          <h3 class="card-title fw-bold">{{ label }}</h3>
+          <span class="badge bg-primary mb-3">Certainty: {{ certainty }}%</span>
+
+          {% if 'healthy' in label.lower() %}
+            <div class="alert alert-success alert-custom d-flex align-items-center mt-3" role="alert">
+              <span class="fs-4 me-2 icon-healthy">🌱</span>
+              <div>Your plant is healthy! Keep monitoring it regularly, provide proper care, and enjoy a good harvest.</div>
+            </div>
+          {% else %}
+            <div class="alert alert-warning alert-custom d-flex align-items-center mt-3" role="alert">
+              <span class="fs-4 me-2 icon-warning">⚠️</span>
+              <div>The system has sent alerts to your registered email and phone. Please follow the recommended action or contact an agricultural advisor for confirmation.</div>
+            </div>
+          {% endif %}
+
+          <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-hover w-100 mt-3">Back to Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Details & Next Steps -->
+    <div class="col-lg-6 fade-in">
+      <div class="card border-0 shadow-lg rounded-4 p-4 h-100">
+        <h4 class="fw-bold mb-4">Details & Next Steps</h4>
+
+        {% if 'healthy' in label.lower() %}
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex align-items-center">
+              <span class="me-3">💧</span> Water regularly
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <span class="me-3">🌞</span> Ensure adequate sunlight
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <span class="me-3">🪴</span> Fertilize as needed
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <span class="me-3">🧹</span> Remove any debris near the plant
+            </li>
+          </ul>
+        {% else %}
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span class="fw-semibold">Recommended Action:</span> {{ recommendation }}
+            </li>
+            <li class="list-group-item">
+              <a href="https://plantwiseplusknowledgebank.org" target="_blank" class="btn btn-outline-success btn-sm mt-1 w-100 btn-hover">Read Expert Tips</a>
+            </li>
+            <li class="list-group-item">
+              <a href="https://www.youtube.com/results?search_query={{ label | urlencode }}" target="_blank" class="btn btn-outline-success btn-sm mt-1 w-100 btn-hover">Watch Treatment Video</a>
+            </li>
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
