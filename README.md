@@ -1,6 +1,9 @@
 # 🌱 CropCare – Automated Crop Disease Detection System
 
 CropCare is a web-based **Automated Crop Disease Detection System with Real-Time Alerts** that uses **AI-based image recognition** to identify plant diseases from leaf images.  
+
+### 🔗 Live Demo: [https://cropcare-7v18.onrender.com](https://cropcare-7v18.onrender.com)
+
 The system provides **instant predictions**, **treatment recommendations**, and **real-time alerts via Email & SMS**, helping farmers take timely action to protect their crops.
 
 ---

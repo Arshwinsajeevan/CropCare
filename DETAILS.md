@@ -3,6 +3,8 @@
 ## 🌟 Project Overview
 CropCare is a web-based platform designed to assist farmers by identifying crop diseases using AI. It leverages deep learning (CNN/TFLite) to analyze leaf images and provides real-time alerts via Email and SMS, along with treatment recommendations.
 
+### 🔗 Live Demo: [https://cropcare-7v18.onrender.com](https://cropcare-7v18.onrender.com)
+
 ## ⚙️ How It Works (Optimized for Render)
 1.  **User Registration**: Farmers sign up securely.
 2.  **Image Upload**: Users upload an image of a crop leaf through the dashboard.
