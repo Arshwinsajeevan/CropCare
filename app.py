@@ -192,7 +192,10 @@ def send_email(to_email, subject, body):
         msg["To"] = to_email
         msg["Subject"] = subject
         msg.attach(MIMEText(body, "plain"))
-        server = smtplib.SMTP("smtp.gmail.com", 587)
+        
+        # Connect to server
+        print(f"📧 Connecting to SMTP...")
+        server = smtplib.SMTP("smtp.gmail.com", 587, timeout=10) # 10s timeout
         server.starttls()
         server.login(EMAIL_USER, EMAIL_PASS)
         server.sendmail(EMAIL_USER, to_email, msg.as_string())
@@ -200,7 +203,7 @@ def send_email(to_email, subject, body):
         print("✅ Email sent to", to_email)
         return True
     except Exception as e:
-        print("❌ Email error:", e)
+        print(f"❌ Email failed (Non-critical): {e}")
         return False
 
 TWILIO_SID = os.getenv("TWILIO_SID")
