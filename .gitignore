@@ -36,8 +36,7 @@ instance/
 
 # Machine Learning / Data
 dataset/
-*.h5
-*.hdf5
+
 *.pt
 *.pth
 *.tar.gz
