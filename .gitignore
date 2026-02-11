@@ -1,21 +1,54 @@
-# Ignore virtual environment
+# Virtual Environments
 venv/
-
-# Ignore environment variables
+env/
 .env
 
-# Ignore compiled Python files
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 
-# Ignore model checkpoints or datasets if large
+# Distribution / Packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Flask
+instance/
+.webassets-cache
+
+# Database
+*.sqlite3
+*.db
+*.sqlite
+
+# Machine Learning / Data
+dataset/
 *.h5
+*.hdf5
 *.pt
-*.ckpt
+*.pth
+*.tar.gz
 
-# Ignore local configs or IDE settings
+# IDE / Editor
 .vscode/
 .idea/
 .DS_Store
+
+# Logs
+*.log
+
+# Project Specific
+static/uploads/
