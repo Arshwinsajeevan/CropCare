@@ -76,16 +76,33 @@ class Notification(db.Model):
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(IST))
 
 # ========== Load ML model & labels ==========
-MODEL_PATH = os.getenv("MODEL_PATH", "model.h5")
-if not os.path.exists(MODEL_PATH):
-    print("WARNING: model.h5 not found at", MODEL_PATH)
+# ========== TFLITE MODEL ==========
+MODEL_PATH = "model.tflite"
 
-model = None
+interpreter = None
+input_details = None
+output_details = None
+
 try:
-    model = tf.keras.models.load_model(MODEL_PATH)
-    print("Loaded model from", MODEL_PATH)
+    # Try using tflite_runtime first (lighter), fallback to tf (dev)
+    try:
+        import tflite_runtime.interpreter as tflite
+        print("Using tflite_runtime")
+    except ImportError:
+        import tensorflow.lite as tflite
+        print("Using tensorflow.lite")
+
+    if os.path.exists(MODEL_PATH):
+        interpreter = tflite.Interpreter(model_path=MODEL_PATH)
+        interpreter.allocate_tensors()
+        input_details = interpreter.get_input_details()
+        output_details = interpreter.get_output_details()
+        print(f"✅ Loaded TFLite model from {MODEL_PATH}")
+    else:
+        print(f"⚠️ Model not found at {MODEL_PATH}")
+
 except Exception as e:
-    print("Could not load model:", e)
+    print("❌ Could not load TFLite model:", e)
 
 CLASS_JSON = "class_indices.json"
 if os.path.exists(CLASS_JSON):
@@ -142,12 +159,19 @@ def create_alert_message(label: str, certainty: int):
     return sms, email
 
 def predict_image(img_path):
-    if model is None:
+    if interpreter is None:
         return "model-not-loaded", 0
+    
+    # Preprocess image
     img = kimage.load_img(img_path, target_size=(128, 128))
     arr = kimage.img_to_array(img) / 255.0
     arr = np.expand_dims(arr, axis=0)
-    preds = model.predict(arr)[0]
+
+    # Run inference
+    interpreter.set_tensor(input_details[0]['index'], arr)
+    interpreter.invoke()
+    preds = interpreter.get_tensor(output_details[0]['index'])[0]
+    
     idx = int(np.argmax(preds))
     raw_label = class_names.get(idx, f"class_{idx}")
     label = pretty_label(raw_label)
