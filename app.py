@@ -194,9 +194,9 @@ def send_email(to_email, subject, body):
         msg.attach(MIMEText(body, "plain"))
         
         # Connect to server
-        print(f"📧 Connecting to SMTP...")
-        server = smtplib.SMTP("smtp.gmail.com", 587, timeout=10) # 10s timeout
-        server.starttls()
+        print(f"📧 Connecting to SMTP (SSL)...")
+        # Try SSL port 465 (often allowed better on cloud)
+        server = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=10)
         server.login(EMAIL_USER, EMAIL_PASS)
         server.sendmail(EMAIL_USER, to_email, msg.as_string())
         server.quit()
